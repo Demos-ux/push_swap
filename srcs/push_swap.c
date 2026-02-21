@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:17:54 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/20 16:50:55 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/21 23:09:31 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ DONE:
 - ft_buildstack
 - ft_freelist
 - ft_assign_index
+- ft_issorted         (pruefen ob stack schon sortiert ist)
 
 NOCH ZU MACHEN:
-- ft_issorted         (pruefen ob stack schon sortiert ist)
 - stack operationen   (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr)
 - ft_smallsort        (hardcoded sort fuer <= 5 elemente)
 - ft_bigsort          (sort algorithmus fuer grosse stacks)
