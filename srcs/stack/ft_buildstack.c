@@ -6,28 +6,27 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 23:06:44 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/20 16:53:43 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/22 22:09:47 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 t_node	*ft_newnode(int value)
 {
-    t_node	*node;
+	t_node	*node;
 
-    node = malloc(sizeof(t_node));
-    if (!node)
-        return (NULL);
-    node->value = value;
-    node->next = NULL;
-    return (node);
+	node = malloc(sizeof(t_node));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->next = NULL;
+	return (node);
 }
 
 void	ft_freelist(t_node *head)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	while (head)
 	{
@@ -37,28 +36,27 @@ void	ft_freelist(t_node *head)
 	}
 }
 
-ft_addnode(t_node	head)
+ft_addnode(t_node head)
 {
-	
 }
-t_node	*ft_buildstack(char**	tokens)
+t_node	*ft_buildstack(char **tokens)
 {
-	int i;
+	int		i;
 	t_node	*head;
-    t_node	*tail;
-	t_node *node;
+	t_node	*tail;
+	t_node	*node;
 	t_node	*tmp;
-	i = 0;
 
-	while(tokens[i])
+	i = 0;
+	while (tokens[i])
 	{
 		node = ft_newnode(atoi(tokens[i]));
-		if(!node)
+		if (!node)
 		{
 			ft_freelist(head);
-			return(NULL);
+			return (NULL);
 		}
-		if(!head)
+		if (!head)
 		{
 			head = node;
 			tail = node;
@@ -70,6 +68,5 @@ t_node	*ft_buildstack(char**	tokens)
 		}
 		i++;
 	}
-	return(head);
+	return (head);
 }
-
