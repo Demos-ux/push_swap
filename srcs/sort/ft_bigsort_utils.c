@@ -1,32 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   ft_bigsort_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:00:00 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 22:20:35 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 23:01:11 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_node **stack)
+int	ft_get_max_pos(t_node *stack)
 {
-	t_node	*last;
-	t_node	*second_last;
+	int	pos;
+	int	max_pos;
+	int	max_idx;
 
-	if (!*stack || !(*stack)->next)
-		return ;
-	last = *stack;
-	second_last = NULL;
-	while (last->next)
+	pos = 0;
+	max_pos = 0;
+	max_idx = stack->index;
+	while (stack)
 	{
-		second_last = last;
-		last = last->next;
+		if (stack->index > max_idx)
+		{
+			max_idx = stack->index;
+			max_pos = pos;
+		}
+		pos++;
+		stack = stack->next;
 	}
-	second_last->next = NULL;
-	last->next = *stack;
-	*stack = last;
+	return (max_pos);
+}
+
+int	ft_get_chunk_size(int size)
+{
+	if (size <= 100)
+		return (26);
+	return (55);
+}
+
+
+void	ft_rotate_b_to_top(t_node **b, int pos, int size)
+{
+	if (pos <= size / 2)
+	{
+		while (pos-- > 0)
+			rb(b);
+	}
+	else
+	{
+		pos = size - pos;
+		while (pos-- > 0)
+			rrb(b);
+	}
 }

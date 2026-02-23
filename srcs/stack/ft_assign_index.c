@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 16:06:24 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 17:02:29 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 21:59:54 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_assign_index(t_node *a)
 
 	i = 0;
 	head = a;
-	size = ft_lstsize(a);
+	size = ft_stacksize(a);
 	while (a)
 	{
 		a->index = -1;

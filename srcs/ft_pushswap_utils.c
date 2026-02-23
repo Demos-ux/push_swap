@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 14:48:03 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/22 22:08:41 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 22:11:21 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,16 @@ int	ft_checktoken(char **tokens)
 {
 	int		i;
 	long	nbr;
+	char	*endptr;
 
 	i = 0;
+	if (!tokens[0])
+		return (1);
 	while (tokens[i])
 	{
 		if (!ft_isvalidnbr(tokens[i]))
 			return (1);
-		nbr = ft_atoi(tokens[i]);
+		nbr = strtol(tokens[i], &endptr, 10);
 		if (nbr > 2147483647 || nbr < -2147483648)
 			return (1);
 		i++;
@@ -70,4 +73,17 @@ int	ft_checktoken(char **tokens)
 	if (ft_hasdup(tokens))
 		return (1);
 	return (0);
+}
+
+int	ft_stacksize(t_node *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }

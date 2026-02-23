@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 23:06:44 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 17:03:26 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 22:20:35 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_node	*ft_newnode(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
+	node->prev = NULL;
 	node->next = NULL;
 	return (node);
 }
@@ -42,9 +43,10 @@ t_node	*ft_buildstack(char **tokens)
 	t_node	*head;
 	t_node	*tail;
 	t_node	*node;
-	t_node	*tmp;
 
 	i = 0;
+	head = NULL;
+	tail = NULL;
 	while (tokens[i])
 	{
 		node = ft_newnode(atoi(tokens[i]));

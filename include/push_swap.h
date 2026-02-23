@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 13:17:56 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 17:00:37 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 22:07:57 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSHSWAP_H
 
 # include "libft.h"
+# include "ft_printf.h"
 # include <limits.h>
 # include <stdio.h>
 
@@ -46,11 +47,18 @@ void			rr(t_node **stack_a, t_node **stack_b);
 void			rra(t_node **stack);
 void			rrb(t_node **stack);
 void			rrr(t_node **stack_a, t_node **stack_b);
+t_node			*ft_buildstack(char **tokens);
 int				ft_checktoken(char **tokens);
-static int		ft_hasdup(char **tokens);
-static int		ft_isvalidnbr(char *str);
-void			ft_assign_index(t_node a);
+int				ft_issorted(t_node *a);
+void			ft_assign_index(t_node *a);
 void			ft_freelist(t_node *head);
 void			ft_freetokens(char **tokens);
+void			ft_error(void);
+void			ft_smallsort(t_node **a, t_node **b);
+void			ft_bigsort(t_node **a, t_node **b);
+int				ft_get_max_pos(t_node *stack);
+int				ft_get_chunk_size(int size);
+void			ft_rotate_b_to_top(t_node **b, int pos, int size);
+int				ft_stacksize(t_node *stack);
 
 #endif

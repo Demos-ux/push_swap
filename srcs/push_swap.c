@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:17:54 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 20:37:00 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 22:10:48 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,28 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc == 2)
 	{
-		tokens = ft_split(argv[1], " ");
+		tokens = ft_split(argv[1], ' ');
 		if (!tokens)
 			return (0);
+		if (!tokens[0])
+		{
+			ft_freetokens(tokens);
+			return (0);
+		}
 	}
 	else
 		tokens = argv + 1;
 	if (ft_checktoken(tokens))
 	{
+		if (argc == 2)
+			ft_freetokens(tokens);
 		ft_error();
-		ft_freetokens(tokens);
 	}
 	a = ft_buildstack(tokens);
 	if (!a)
 		ft_error();
 	ft_assign_index(a);
-	size = ft_lstsize(a);
+	size = ft_stacksize(a);
 	if (ft_issorted(a))
 	{
 		ft_freelist(a);
@@ -85,8 +91,8 @@ DONE:
 - ft_issorted         (pruefen ob stack schon sortiert ist)
 - stack operationen   (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr)
 - ft_smallsort        (hardcoded sort fuer <= 5 elemente)
+- ft_bigsort          (sort algorithmus fuer grosse stacks)
 
 NOCH ZU MACHEN:
-- ft_bigsort          (sort algorithmus fuer grosse stacks)
 
 */
