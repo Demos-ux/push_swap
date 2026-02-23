@@ -6,7 +6,7 @@
 #    By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/23 17:00:00 by dsisli            #+#    #+#              #
-#    Updated: 2026/02/23 22:07:57 by dsisli           ###   ########.fr        #
+#    Updated: 2026/02/24 00:20:23 by dsisli           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ SRCS		=	srcs/push_swap.c				\
 				srcs/sort/ft_issorted.c			\
 				srcs/sort/big_sort.c			\
 				srcs/sort/ft_bigsort_utils.c	\
+				srcs/sort/ft_execute.c			\
+				srcs/sort/ft_target.c			\
 				srcs/sort/small_sort.c			\
 				srcs/sort/push/push.c			\
 				srcs/sort/push/pa.c				\

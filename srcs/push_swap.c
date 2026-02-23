@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:17:54 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 22:10:48 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/24 00:13:51 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,20 @@ void	ft_freetokens(char **tokens)
 	free(tokens);
 }
 
-int	main(int argc, char **argv)
+t_node	*ft_init_stack(int argc, char **argv)
 {
-	char	**tokens;
 	t_node	*a;
-	t_node	*b;
-	int		size;
+	char	**tokens;
 
 	a = NULL;
-	b = NULL;
 	if (argc <= 1)
-		return (0);
+		exit(0);
 	if (argc == 2)
-	{
 		tokens = ft_split(argv[1], ' ');
-		if (!tokens)
-			return (0);
-		if (!tokens[0])
-		{
-			ft_freetokens(tokens);
-			return (0);
-		}
-	}
 	else
 		tokens = argv + 1;
+	if (!tokens)
+		ft_error();
 	if (ft_checktoken(tokens))
 	{
 		if (argc == 2)
@@ -62,37 +52,33 @@ int	main(int argc, char **argv)
 		ft_error();
 	}
 	a = ft_buildstack(tokens);
+	if (argc == 2)
+		ft_freetokens(tokens);
 	if (!a)
 		ft_error();
+	return (a);
+}
+
+int	main(int argc, char **argv)
+{
+	t_node	*a;
+	t_node	*b;
+	int		size;
+
+	b = NULL;
+	a = ft_init_stack(argc, argv);
 	ft_assign_index(a);
-	size = ft_stacksize(a);
 	if (ft_issorted(a))
 	{
 		ft_freelist(a);
 		return (0);
 	}
+	size = ft_stacksize(a);
 	if (size <= 5)
 		ft_smallsort(&a, &b);
 	else
 		ft_bigsort(&a, &b);
 	ft_freelist(a);
 	ft_freelist(b);
-	if (argc == 2)
-		ft_freetokens(tokens);
 	return (0);
 }
-
-/*TODO
-DONE:
-- ft_checktoken (mit ft_isvalidnbr, ft_hasdup)
-- ft_buildstack
-- ft_freelist
-- ft_assign_index
-- ft_issorted         (pruefen ob stack schon sortiert ist)
-- stack operationen   (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr)
-- ft_smallsort        (hardcoded sort fuer <= 5 elemente)
-- ft_bigsort          (sort algorithmus fuer grosse stacks)
-
-NOCH ZU MACHEN:
-
-*/

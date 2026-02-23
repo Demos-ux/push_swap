@@ -6,11 +6,31 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 14:48:03 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 22:11:21 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 23:34:54 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static long	ft_atol(char *str)
+{
+	long	result;
+	int		sign;
+	int		i;
+
+	result = 0;
+	sign = 1;
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+		result = result * 10 + (str[i++] - '0');
+	return (result * sign);
+}
 
 static int	ft_isvalidnbr(char *str)
 {
@@ -56,7 +76,6 @@ int	ft_checktoken(char **tokens)
 {
 	int		i;
 	long	nbr;
-	char	*endptr;
 
 	i = 0;
 	if (!tokens[0])
@@ -65,7 +84,7 @@ int	ft_checktoken(char **tokens)
 	{
 		if (!ft_isvalidnbr(tokens[i]))
 			return (1);
-		nbr = strtol(tokens[i], &endptr, 10);
+		nbr = ft_atol(tokens[i]);
 		if (nbr > 2147483647 || nbr < -2147483648)
 			return (1);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 23:06:44 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 22:20:35 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/24 00:20:23 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ void	ft_freelist(t_node *head)
 	}
 }
 
+static void	ft_append_node(t_node **head, t_node **tail, t_node *node)
+{
+	if (!*head)
+	{
+		*head = node;
+		*tail = node;
+	}
+	else
+	{
+		(*tail)->next = node;
+		*tail = node;
+	}
+}
+
 t_node	*ft_buildstack(char **tokens)
 {
 	int		i;
@@ -49,22 +63,13 @@ t_node	*ft_buildstack(char **tokens)
 	tail = NULL;
 	while (tokens[i])
 	{
-		node = ft_newnode(atoi(tokens[i]));
+		node = ft_newnode(ft_atoi(tokens[i]));
 		if (!node)
 		{
 			ft_freelist(head);
 			return (NULL);
 		}
-		if (!head)
-		{
-			head = node;
-			tail = node;
-		}
-		else
-		{
-			tail->next = node;
-			tail = node;
-		}
+		ft_append_node(&head, &tail, node);
 		i++;
 	}
 	return (head);

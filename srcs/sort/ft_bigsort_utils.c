@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:00:00 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 23:01:11 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/24 00:20:23 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_get_chunk_size(int size)
 	return (55);
 }
 
-
 void	ft_rotate_b_to_top(t_node **b, int pos, int size)
 {
 	if (pos <= size / 2)
@@ -55,4 +54,18 @@ void	ft_rotate_b_to_top(t_node **b, int pos, int size)
 		while (pos-- > 0)
 			rrb(b);
 	}
+}
+
+int	ft_imax(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+int	ft_imin(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

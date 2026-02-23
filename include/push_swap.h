@@ -6,17 +6,16 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 13:17:56 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 22:07:57 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/24 00:20:23 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "libft.h"
 # include "ft_printf.h"
 # include <limits.h>
-# include <stdio.h>
 
 typedef struct node
 {
@@ -26,11 +25,13 @@ typedef struct node
 	struct node	*next;
 }				t_node;
 
-typedef struct stack
+typedef struct s_move
 {
-	int			size;
-	t_node		token;
-}				t_stack;
+	int	pb;
+	int	pa;
+	int	sb;
+	int	sa;
+}				t_move;
 
 void			push(t_node **src, t_node **dst);
 void			swap(t_node *stack);
@@ -60,5 +61,10 @@ int				ft_get_max_pos(t_node *stack);
 int				ft_get_chunk_size(int size);
 void			ft_rotate_b_to_top(t_node **b, int pos, int size);
 int				ft_stacksize(t_node *stack);
+int				ft_imax(int a, int b);
+int				ft_imin(int a, int b);
+int				ft_calc_cost(t_move mv);
+void			ft_best_pair(t_node **a, t_node **b, t_move *mv);
+void			ft_execute(t_node **a, t_node **b, t_move mv);
 
 #endif
