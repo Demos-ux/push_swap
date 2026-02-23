@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:17:54 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/22 22:09:28 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 20:37:00 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_error(void)
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
+
 void	ft_freetokens(char **tokens)
 {
 	int	i;
@@ -29,6 +30,7 @@ void	ft_freetokens(char **tokens)
 	}
 	free(tokens);
 }
+
 int	main(int argc, char **argv)
 {
 	char	**tokens;
@@ -81,9 +83,10 @@ DONE:
 - ft_freelist
 - ft_assign_index
 - ft_issorted         (pruefen ob stack schon sortiert ist)
-
-NOCH ZU MACHEN:
 - stack operationen   (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr)
 - ft_smallsort        (hardcoded sort fuer <= 5 elemente)
+
+NOCH ZU MACHEN:
 - ft_bigsort          (sort algorithmus fuer grosse stacks)
+
 */

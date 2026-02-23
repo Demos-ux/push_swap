@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/22 16:52:14 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 16:48:47 by dsisli           ###   ########.fr       */
+/*   Created: 2026/02/23 16:49:07 by dsisli            #+#    #+#             */
+/*   Updated: 2026/02/23 16:51:56 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_node **src, t_node **dst)
+void	rb(t_node **stack)
 {
-	t_node	*temp;
-
-	if (!src || !*src)
-		return ;
-	temp = *src;
-	*src = temp->next;
-	temp->next = *dst;
-	*dst = temp;
+	rotate(stack);
+	ft_printf("rb\n");
 }

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/22 16:52:14 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 16:48:47 by dsisli           ###   ########.fr       */
+/*   Created: 2026/02/23 17:00:00 by dsisli            #+#    #+#             */
+/*   Updated: 2026/02/23 17:00:37 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_node **src, t_node **dst)
+void	reverse_rotate(t_node **stack)
 {
-	t_node	*temp;
+	t_node	*first;
+	t_node	*last;
 
-	if (!src || !*src)
+	if (!*stack || !(*stack)->next)
 		return ;
-	temp = *src;
-	*src = temp->next;
-	temp->next = *dst;
-	*dst = temp;
+	first = *stack;
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	last->prev->next = NULL;
+	last->prev = NULL;
+	last->next = first;
+	first->prev = last;
+	*stack = last;
 }

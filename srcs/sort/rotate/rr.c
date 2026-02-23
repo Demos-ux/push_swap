@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_issorted.c                                      :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/21 21:59:55 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/21 22:18:27 by dsisli           ###   ########.fr       */
+/*   Created: 2026/02/23 16:53:04 by dsisli            #+#    #+#             */
+/*   Updated: 2026/02/23 17:04:49 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_issorted(t_node *a)
+void	rr(t_node **stack_a, t_node **stack_b)
 {
-    while (a && a->next)
-    {
-        if (a->value > a->next->value)
-            return (0);
-        a = a->next;
-    }
-    return (1);
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_printf("rr\n");
 }

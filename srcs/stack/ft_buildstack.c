@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 23:06:44 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/22 22:09:47 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 17:03:26 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ void	ft_freelist(t_node *head)
 	}
 }
 
-ft_addnode(t_node head)
-{
-}
 t_node	*ft_buildstack(char **tokens)
 {
 	int		i;

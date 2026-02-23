@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 16:06:24 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/22 22:09:41 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 17:02:29 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static t_node	*ft_findmin(t_node *head)
 	}
 	return (min);
 }
+
 void	ft_assign_index(t_node *a)
 {
 	int		i;

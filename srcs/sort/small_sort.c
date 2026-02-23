@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/22 16:52:14 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/23 16:48:47 by dsisli           ###   ########.fr       */
+/*   Created: 2026/02/23 17:22:20 by dsisli            #+#    #+#             */
+/*   Updated: 2026/02/23 19:25:17 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_node **src, t_node **dst)
-{
-	t_node	*temp;
 
-	if (!src || !*src)
-		return ;
-	temp = *src;
-	*src = temp->next;
-	temp->next = *dst;
-	*dst = temp;
+
+void	ft_small_sort(t_node	*stack)
+{
+	t_node	two;
+	t_node	three;
+
+	two = *stack->next;
+	three = *stack->next->next;
+	while(stack->next)
+	{
+		if(stack->value > &two)
+			if(&two > &three)
+			{
+				ra(&*stack);
+			}
+			else
+				rra(&*stack);
+		else
+			sa(&*stack);
+		stack=stack->next;
+	}
 }

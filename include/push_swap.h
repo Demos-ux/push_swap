@@ -6,49 +6,51 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 13:17:56 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/20 16:40:49 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 17:00:37 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
-#include	<stdio.h>
-#include	"libft.h"
-#include	<limits.h>
+# include "libft.h"
+# include <limits.h>
+# include <stdio.h>
 
-
-typedef struct	node
+typedef struct node
 {
-	int	index;
-	int	value;
+	int			index;
+	int			value;
 	struct node	*prev;
 	struct node	*next;
-}t_node;
+}				t_node;
 
-typedef	struct stack
+typedef struct stack
 {
-	int	size;
-	t_node token;
-}t_stack;
+	int			size;
+	t_node		token;
+}				t_stack;
 
-
-void	sa(); //swap a
-void	sb(); //swap b
-void	ss(); //sa and sb same time
-void	pa(); //push a
-void	pb(); //push b
-void	ra(); //rotate a
-void	rb(); //rotate b
-void	rr(); //rotate a and b
-void	rra(); //reverse ra
-void	rrb(); //reverse rb
-void	rrr(); //rra und rrb same time
-int	ft_checktoken(char **tokens);
-static int	ft_hasdup(char **tokens);
-static int	ft_isvalidnbr(char *str);
-void	ft_assign_index(t_node a);
-void	ft_freelist(t_node *head);
-void	ft_freetokens(char** tokens);
+void			push(t_node **src, t_node **dst);
+void			swap(t_node *stack);
+void			rotate(t_node **stack);
+void			reverse_rotate(t_node **stack);
+void			sa(t_node *stack);
+void			sb(t_node *stack);
+void			ss(t_node *a, t_node *b);
+void			pa(t_node **a, t_node **b);
+void			pb(t_node **a, t_node **b);
+void			ra(t_node **stack);
+void			rb(t_node **stack);
+void			rr(t_node **stack_a, t_node **stack_b);
+void			rra(t_node **stack);
+void			rrb(t_node **stack);
+void			rrr(t_node **stack_a, t_node **stack_b);
+int				ft_checktoken(char **tokens);
+static int		ft_hasdup(char **tokens);
+static int		ft_isvalidnbr(char *str);
+void			ft_assign_index(t_node a);
+void			ft_freelist(t_node *head);
+void			ft_freetokens(char **tokens);
 
 #endif

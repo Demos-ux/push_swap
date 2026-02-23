@@ -6,7 +6,18 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 16:09:28 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/22 22:33:01 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/23 19:54:49 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+void	big_sort(t_node	*stack_a, t_node	*stack_b)
+{
+	int	limit;
+
+	limit = 20;
+
+	while()
+
+}
