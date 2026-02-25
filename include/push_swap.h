@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 13:17:56 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/24 00:20:23 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/26 00:12:48 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,19 @@ typedef struct node
 {
 	int			index;
 	int			value;
-	struct node	*prev;
 	struct node	*next;
 }				t_node;
 
 typedef struct s_move
 {
-	int	pb;
-	int	pa;
-	int	sb;
-	int	sa;
+	int	pos_b;
+	int	pos_a;
+	int	size_b;
+	int	size_a;
 }				t_move;
 
 void			push(t_node **src, t_node **dst);
 void			swap(t_node *stack);
-void			rotate(t_node **stack);
-void			reverse_rotate(t_node **stack);
 void			sa(t_node *stack);
 void			sb(t_node *stack);
 void			ss(t_node *a, t_node *b);
@@ -49,6 +46,7 @@ void			rra(t_node **stack);
 void			rrb(t_node **stack);
 void			rrr(t_node **stack_a, t_node **stack_b);
 t_node			*ft_buildstack(char **tokens);
+t_node			*ft_init_stack(int argc, char **argv);
 int				ft_checktoken(char **tokens);
 int				ft_issorted(t_node *a);
 void			ft_assign_index(t_node *a);

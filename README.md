@@ -34,6 +34,48 @@ make
 ./push_swap 3 1 4 1 5 9 2 6
 ./push_swap "3 1 4 1 5 9 2 6"
 ```
+
+## For the Random Numbers and a better way of using the checker you can copy paste this skript in a test.sh
+#!/bin/bash
+
+# Usage: ./test.sh <n> [verbose]
+# Example: ./test.sh 100
+#          ./test.sh 500 verbose
+
+N=${1:-100}
+VERBOSE=${2:-""}
+
+if ! [[ "$N" =~ ^[0-9]+$ ]] || [ "$N" -lt 1 ]; then
+    echo "Usage: $0 <n> [verbose]"
+    exit 1
+fi
+
+# Generate n unique random numbers
+NUMS=$(shuf -i -2147483648-2147483647 -n "$N" 2>/dev/null || \
+       python3 -c "import random; nums=random.sample(range(-2147483648, 2147483648), $N); print(' '.join(map(str, nums)))")
+
+# Get all moves
+MOVES=$(./push_swap $NUMS)
+
+# Count operations
+OPS=$(echo "$MOVES" | wc -l)
+
+# Check result
+RESULT=$(echo "$MOVES" | ./checker $NUMS | tail -n 1)
+
+# Output
+echo "Numbers : $N"
+echo "Operations: $OPS"
+echo "Result  : $RESULT"
+echo ""
+#echo "Commands:"
+#echo "$MOVES"
+
+if [ "$VERBOSE" = "verbose" ]; then
+    echo ""
+    echo "Input   : $NUMS"
+fi
+
 ##
 ## Note
 

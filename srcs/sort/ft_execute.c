@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:00:00 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/24 00:26:21 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/24 21:37:05 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,82 +14,82 @@
 
 static void	ft_exec_fwd(t_node **a, t_node **b, t_move mv)
 {
-	int	common;
-	int	fb;
-	int	fa;
+	int	shared_steps;
+	int	fwd_b;
+	int	fwd_a;
 
-	fb = mv.pb;
-	fa = mv.pa;
-	common = ft_imin(fb, fa);
-	fb -= common;
-	fa -= common;
-	while (common-- > 0)
+	fwd_b = mv.pos_b;
+	fwd_a = mv.pos_a;
+	shared_steps = ft_imin(fwd_b, fwd_a);
+	fwd_b -= shared_steps;
+	fwd_a -= shared_steps;
+	while (shared_steps-- > 0)
 		rr(a, b);
-	while (fb-- > 0)
+	while (fwd_b-- > 0)
 		rb(b);
-	while (fa-- > 0)
+	while (fwd_a-- > 0)
 		ra(a);
 }
 
 static void	ft_exec_bwd(t_node **a, t_node **b, t_move mv)
 {
-	int	common;
-	int	bb;
-	int	ba;
+	int	shared_steps;
+	int	bwd_b;
+	int	bwd_a;
 
-	bb = mv.sb - mv.pb;
-	ba = mv.sa - mv.pa;
-	common = ft_imin(bb, ba);
-	bb -= common;
-	ba -= common;
-	while (common-- > 0)
+	bwd_b = mv.size_b - mv.pos_b;
+	bwd_a = mv.size_a - mv.pos_a;
+	shared_steps = ft_imin(bwd_b, bwd_a);
+	bwd_b -= shared_steps;
+	bwd_a -= shared_steps;
+	while (shared_steps-- > 0)
 		rrr(a, b);
-	while (bb-- > 0)
+	while (bwd_b-- > 0)
 		rrb(b);
-	while (ba-- > 0)
+	while (bwd_a-- > 0)
 		rra(a);
 }
 
 static void	ft_exec_fwd_abwd(t_node **a, t_node **b, t_move mv)
 {
-	int	fb;
-	int	ba;
+	int	fwd_b;
+	int	bwd_a;
 
-	fb = mv.pb;
-	ba = mv.sa - mv.pa;
-	while (fb-- > 0)
+	fwd_b = mv.pos_b;
+	bwd_a = mv.size_a - mv.pos_a;
+	while (fwd_b-- > 0)
 		rb(b);
-	while (ba-- > 0)
+	while (bwd_a-- > 0)
 		rra(a);
 }
 
 static void	ft_exec_bwd_afwd(t_node **a, t_node **b, t_move mv)
 {
-	int	bb;
-	int	fa;
+	int	bwd_b;
+	int	fwd_a;
 
-	bb = mv.sb - mv.pb;
-	fa = mv.pa;
-	while (bb-- > 0)
+	bwd_b = mv.size_b - mv.pos_b;
+	fwd_a = mv.pos_a;
+	while (bwd_b-- > 0)
 		rrb(b);
-	while (fa-- > 0)
+	while (fwd_a-- > 0)
 		ra(a);
 }
 
 void	ft_execute(t_node **a, t_node **b, t_move mv)
 {
-	int	best;
-	int	fb;
-	int	bb;
+	int	min_cost;
+	int	fwd_b;
+	int	bwd_b;
 
-	fb = mv.pb;
-	bb = mv.sb - mv.pb;
-	best = ft_calc_cost(mv);
-	if (best == ft_imax(fb, mv.pa))
+	fwd_b = mv.pos_b;
+	bwd_b = mv.size_b - mv.pos_b;
+	min_cost = ft_calc_cost(mv);
+	if (min_cost == ft_imax(fwd_b, mv.pos_a))
 		ft_exec_fwd(a, b, mv);
-	else if (best == ft_imax(bb, mv.sa - mv.pa))
+	else if (min_cost == ft_imax(bwd_b, mv.size_a - mv.pos_a))
 		ft_exec_bwd(a, b, mv);
-	else if (best == fb + (mv.sa - mv.pa))
+	else if (min_cost == fwd_b + (mv.size_a - mv.pos_a))
 		ft_exec_fwd_abwd(a, b, mv);
 	else
 		ft_exec_bwd_afwd(a, b, mv);

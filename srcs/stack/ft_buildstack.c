@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 23:06:44 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/24 00:20:23 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/26 00:13:33 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_node	*ft_newnode(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
-	node->prev = NULL;
 	node->next = NULL;
 	return (node);
 }

@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 16:09:28 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/24 00:20:23 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/24 21:37:04 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static void	ft_push_chunks(t_node **a, t_node **b, int chunk_min, int chunk_max)
 
 static void	ft_align_a(t_node **a)
 {
-	int		sa;
+	int		size_a;
 	int		pos_min;
 	t_node	*cur;
 
-	sa = ft_stacksize(*a);
+	size_a = ft_stacksize(*a);
 	cur = *a;
 	pos_min = 0;
 	while (cur && cur->index != 0)
@@ -61,12 +61,12 @@ static void	ft_align_a(t_node **a)
 		pos_min++;
 		cur = cur->next;
 	}
-	if (pos_min <= sa / 2)
+	if (pos_min <= size_a / 2)
 		while (pos_min-- > 0)
 			ra(a);
 	else
 	{
-		pos_min = sa - pos_min;
+		pos_min = size_a - pos_min;
 		while (pos_min-- > 0)
 			rra(a);
 	}
@@ -83,8 +83,8 @@ static void	ft_push_back(t_node **a, t_node **b)
 			pa(a, b);
 			continue ;
 		}
-		mv.pb = 0;
-		mv.pa = 0;
+		mv.pos_b = 0;
+		mv.pos_a = 0;
 		ft_best_pair(a, b, &mv);
 		ft_execute(a, b, mv);
 	}

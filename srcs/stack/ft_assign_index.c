@@ -35,14 +35,16 @@ void	ft_assign_index(t_node *a)
 	int		size;
 	t_node	*head;
 	t_node	*min;
+	t_node	*cur;
 
 	i = 0;
 	head = a;
 	size = ft_stacksize(a);
-	while (a)
+	cur = a;
+	while (cur)
 	{
-		a->index = -1;
-		a = a->next;
+		cur->index = -1;
+		cur = cur->next;
 	}
 	while (i < size)
 	{

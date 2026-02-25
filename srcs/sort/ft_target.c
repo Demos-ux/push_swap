@@ -6,7 +6,7 @@
 /*   By: dsisli <dsisli@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:00:00 by dsisli            #+#    #+#             */
-/*   Updated: 2026/02/24 00:20:23 by dsisli           ###   ########.fr       */
+/*   Updated: 2026/02/24 21:37:03 by dsisli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ int	ft_calc_cost(t_move mv)
 	int	c3;
 	int	c4;
 
-	c1 = ft_imax(mv.pb, mv.pa);
-	c2 = ft_imax(mv.sb - mv.pb, mv.sa - mv.pa);
-	c3 = mv.pb + (mv.sa - mv.pa);
-	c4 = (mv.sb - mv.pb) + mv.pa;
+	c1 = ft_imax(mv.pos_b, mv.pos_a);
+	c2 = ft_imax(mv.size_b - mv.pos_b, mv.size_a - mv.pos_a);
+	c3 = mv.pos_b + (mv.size_a - mv.pos_a);
+	c4 = (mv.size_b - mv.pos_b) + mv.pos_a;
 	return (ft_imin(ft_imin(c1, c2), ft_imin(c3, c4)));
 }
 
@@ -83,8 +83,8 @@ static void	ft_update_best(t_move *best_mv, t_move *tmp,
 	if (cost < *best_cost)
 	{
 		*best_cost = cost;
-		best_mv->pb = pos_b;
-		best_mv->pa = tmp->pa;
+		best_mv->pos_b = pos_b;
+		best_mv->pos_a = tmp->pos_a;
 	}
 }
 
@@ -95,17 +95,17 @@ void	ft_best_pair(t_node **a, t_node **b, t_move *mv)
 	int		best_cost;
 	t_move	tmp;
 
-	mv->sb = ft_stacksize(*b);
-	mv->sa = ft_stacksize(*a);
+	mv->size_b = ft_stacksize(*b);
+	mv->size_a = ft_stacksize(*a);
 	cur = *b;
 	pos_b = 0;
 	best_cost = INT_MAX;
 	while (cur)
 	{
-		tmp.pb = pos_b;
-		tmp.pa = ft_find_target(*a, cur->index);
-		tmp.sb = mv->sb;
-		tmp.sa = mv->sa;
+		tmp.pos_b = pos_b;
+		tmp.pos_a = ft_find_target(*a, cur->index);
+		tmp.size_b = mv->size_b;
+		tmp.size_a = mv->size_a;
 		ft_update_best(mv, &tmp, &best_cost, pos_b);
 		pos_b++;
 		cur = cur->next;

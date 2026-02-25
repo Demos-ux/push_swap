@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_get_max_pos(t_node *stack)
+int	ft_get_max_pos(t_node *cur)
 {
 	int	pos;
 	int	max_pos;
@@ -20,16 +20,16 @@ int	ft_get_max_pos(t_node *stack)
 
 	pos = 0;
 	max_pos = 0;
-	max_idx = stack->index;
-	while (stack)
+	max_idx = cur->index;
+	while (cur)
 	{
-		if (stack->index > max_idx)
+		if (cur->index > max_idx)
 		{
-			max_idx = stack->index;
+			max_idx = cur->index;
 			max_pos = pos;
 		}
 		pos++;
-		stack = stack->next;
+		cur = cur->next;
 	}
 	return (max_pos);
 }
